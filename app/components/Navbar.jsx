@@ -1,76 +1,97 @@
 import { assets } from '@/assets/assets'
 import Image from 'next/image'
-import React, {useEffect, useRef, useState} from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
-const Navbar = ({isDarkMode,setIsDarkMode}) => {
+const Navbar = ({ isDarkMode, setIsDarkMode }) => {
 
-    const [isScroll,setIsScroll] = useState(false);
+    const [isScroll, setIsScroll] = useState(false);
+    const [scrollProgress, setScrollProgress] = useState(0);
     const sideMenuRef = useRef();
 
-    const openMenu = ()=>{
+    const openMenu = () => {
         sideMenuRef.current.style.transform = 'translateX(-16rem)'
     }
-    const closeMenu = ()=>{
+    const closeMenu = () => {
         sideMenuRef.current.style.transform = 'translateX(16rem)'
     }
-    useEffect(()=>{
-        window.addEventListener('scroll',()=>{
-            if(scrollY > 50){
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
                 setIsScroll(true)
-            }else{
+            } else {
                 setIsScroll(false)
             }
-        })
-    },[])
-  return (
-     <>
-     <div className='fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden'>
-        <Image src={assets.header_bg_color} alt='' className='w-full'/>
-     </div>
 
-     <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4
-     flex items-center justify-between z-50 ${isScroll ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm dark:bg-darkTheme dark:shadow-white/20": ""} `}>
-        <a href="#top">
-            <Image src={isDarkMode ? assets.logo_dark : assets.logo} className='w-28 cursor-pointer mr-14' alt=''/>
-            </a>
+            // Calculate scroll progress
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.scrollY / totalHeight) * 100;
+            setScrollProgress(progress);
+        };
 
-        <ul className={`hidden md:flex items-center gap-6 lg:gap-8
-        rounded-full px-12 py-3 ${isScroll ? "" : "bg-white shadow-sm bg-capacity-50 dark:border dark:border-white/50 dark:bg-transparent"} `}>
-            <li><a className='font-Ovo' href="#top">Home</a></li>
-            <li><a className='font-Ovo' href="#about">About us</a></li>
-            <li><a className='font-Ovo' href="#services">Services</a></li>
-            <li><a className='font-Ovo' href="#work">My Work</a></li>
-            <li><a className='font-Ovo' href="#contact">Contact me</a></li>
-        </ul>
-        <div className='flex items-center gap-4'>
-            <button onClick={()=> setIsDarkMode(prev => !prev)}>
-                <Image src={isDarkMode ? assets.sun_icon : assets.moon_icon} alt='' className='w-6'/>
-            </button>
-
-            <a className='hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 font-Ovo dark:border-white/50 ' href="#contact">Contact 
-                <Image src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon} className='w-3' alt=''/></a>
-
-            <button className='block md:hidden ml-3' onClick={openMenu}>
-                <Image src={isDarkMode ? assets.menu_white : assets.menu_black} className='w-6' alt=''/>
-            </button>
-        </div>
-
-        {/* mobile menu */}
-
-        <ul ref={sideMenuRef} className='flex md:hidden flex-col gap-4 px-10 py-20 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen
-         bg-rose-50 transition duration-500 dark:bg-darkHover dark:text-white'>
-            <div className='absolute right-6 top-6' onClick={closeMenu}>
-                <Image src={isDarkMode ? assets.close_white : assets.close_black} alt='' className='w-5 cursor-pointer'/>
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [])
+    return (
+        <>
+            {/* Scroll Progress Bar */}
+            <div className='fixed top-0 left-0 w-full h-1 z-[60] bg-transparent'>
+                <div
+                    className='h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-150'
+                    style={{ width: `${scrollProgress}%` }}
+                />
             </div>
-            <li><a onClick={closeMenu} className='font-Ovo' href="#top">Home</a></li>
-            <li><a onClick={closeMenu} className='font-Ovo' href="#about">About us</a></li>
-            <li><a onClick={closeMenu} className='font-Ovo' href="#services">Services</a></li>
-            <li><a onClick={closeMenu} className='font-Ovo' href="#work">My Work</a></li>
-            <li><a onClick={closeMenu} className='font-Ovo' href="#contact">Contact me</a></li>
-        </ul>
-     </nav>
-     </>
-  )
+
+            <div className='fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%] dark:hidden'>
+                <Image src={assets.header_bg_color} alt='' className='w-full' />
+            </div>
+
+            <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4
+     flex items-center justify-between z-50 ${isScroll ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm dark:bg-darkTheme dark:shadow-white/20" : ""} `}>
+                <a href="#top" className='text-3xl font-Ovo tracking-wide font-bold dark:text-white'>
+                    Manish<span className='text-blue-500'>.</span>
+                </a>
+
+
+                <ul className={`hidden md:flex items-center gap-6 lg:gap-8
+        rounded-full px-12 py-3 ${isScroll ? "" : "bg-white shadow-sm bg-capacity-50 dark:border dark:border-white/50 dark:bg-transparent"} `}>
+                    <li><a className='font-Ovo' href="#top">Home</a></li>
+                    <li><a className='font-Ovo' href="#about">About me</a></li>
+                    <li><a className='font-Ovo' href="#experience">Experience</a></li>
+                    <li><a className='font-Ovo' href="#services">Services</a></li>
+                    <li><a className='font-Ovo' href="#work">My Work</a></li>
+                    <li><a className='font-Ovo' href="#contact">Contact me</a></li>
+                </ul>
+                <div className='flex items-center gap-4'>
+                    <button onClick={() => setIsDarkMode(prev => !prev)}>
+                        <Image src={isDarkMode ? assets.sun_icon : assets.moon_icon} alt='' className='w-6' />
+                    </button>
+
+                    <a className='hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 font-Ovo dark:border-white/50 ' href="#contact">Contact
+                        <Image src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon} className='w-3' alt='' /></a>
+
+                    <button className='block md:hidden ml-3' onClick={openMenu}>
+                        <Image src={isDarkMode ? assets.menu_white : assets.menu_black} className='w-6' alt='' />
+                    </button>
+                </div>
+
+                {/* mobile menu */}
+
+                <ul ref={sideMenuRef} className='flex md:hidden flex-col gap-4 px-10 py-20 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen
+         bg-rose-50 transition duration-500 dark:bg-darkHover dark:text-white'>
+                    <div className='absolute right-6 top-6' onClick={closeMenu}>
+                        <Image src={isDarkMode ? assets.close_white : assets.close_black} alt='' className='w-5 cursor-pointer' />
+                    </div>
+                    <li><a onClick={closeMenu} className='font-Ovo' href="#top">Home</a></li>
+                    <li><a onClick={closeMenu} className='font-Ovo' href="#about">About me</a></li>
+                    <li><a onClick={closeMenu} className='font-Ovo' href="#experience">Experience</a></li>
+                    <li><a onClick={closeMenu} className='font-Ovo' href="#services">Services</a></li>
+                    <li><a onClick={closeMenu} className='font-Ovo' href="#work">My Work</a></li>
+                    <li><a onClick={closeMenu} className='font-Ovo' href="#contact">Contact me</a></li>
+                </ul>
+            </nav>
+        </>
+    )
 }
 
 export default Navbar

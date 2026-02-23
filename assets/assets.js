@@ -78,32 +78,109 @@ export const assets = {
 
 export const workData = [
     {
-        title: 'Frontend project',
-        description: 'Web Design',
+        title: 'GrowUp Pet Shop',
+        description: 'Odoo-based eCommerce & ERP System',
         bgImage: '/work-1.png',
+        tags: ['Odoo', 'Python', 'eCommerce', 'ERP'],
+        link: 'https://growuppetshop.com.np/',
+        caseStudy: {
+            problem: 'The business struggled with manual inventory tracking and disconnected sales channels between the brick-and-mortar store and their online presence.',
+            tech: 'Implemented Odoo ERP as the backend source of truth, custom-coding modules for automated stock sync and integrating XML-RPC for the frontend.',
+            impact: 'Reduced stock discrepancies by 90% and allowed the business to handle 3x more orders per day without increasing staff.'
+        }
     },
     {
-        title: 'Photography site',
-        description: 'Web Design',
+        title: 'Multi-Vendor E-commerce',
+        description: 'Next.js & Django Platform',
         bgImage: '/work-3.png',
+        tags: ['Next.js', 'Django', 'Tailwind CSS', 'PostgreSQL'],
+        caseStudy: {
+            problem: 'Existing platforms were too rigid to handle complex merchant commissions and localized payment gateways in Nepal.',
+            tech: 'Built a highly scalable Django Rest Framework backend with a Next.js 14 frontend, utilizing PostgreSQL JSONB fields for flexible product attributes.',
+            impact: 'Successfully onboarded 15+ vendors and processed 500+ transactions in the first month of beta testing.'
+        }
     },
     {
-        title: 'UI/UX designing',
-        description: 'UI/UX Design',
+        title: 'Manish Portfolio',
+        description: 'Modern Portfolio Website',
         bgImage: '/work-4.png',
+        tags: ['React.js', 'Next.js', 'Framer Motion', 'Tailwind CSS'],
+        caseStudy: {
+            problem: 'Needed a way to showcase complex ERP expertise in a visually engaging way that stands out from generic developer portfolios.',
+            tech: 'Leveraged Framer Motion for premium animations and optimized Next.js for high performance and SEO.',
+            impact: 'Achieved 95+ score on Lighthouse Performance and received job inquiries within 48 hours of launch.'
+        }
     },
 ]
 
+export const socialData = [
+    { name: 'LinkedIn', icon: assets.code_icon, link: 'https://www.linkedin.com/in/manish-dahal45/' },
+    { name: 'WhatsApp', icon: assets.mobile_icon, link: 'https://wa.me/9811203533' },
+    { name: 'GitHub', icon: assets.git, link: 'https://github.com/dahalmanish' },
+];
+
 export const serviceData = [
-    { icon: assets.web_icon, title: 'Web design', description: 'Web development is the process of building, programming...', link: '' },
-    { icon: assets.ui_icon, title: 'UI/UX design', description: 'UI/UX design focuses on creating a seamless user experience...', link: '' },
-    { icon: assets.graphics_icon, title: 'Graphics design', description: 'Creative design solutions to enhance visual communication...', link: '' },
+    { icon: assets.web_icon, title: 'Web Development', description: 'Building responsive, performant web apps using React.js, Next.js, and Tailwind CSS with clean, maintainable code.', link: '' },
+    { icon: assets.ui_icon, title: 'ERP Solutions', description: 'Configuring and customizing Odoo ERP modules for eCommerce, sales, inventory management and business process automation.', link: '' },
+    { icon: assets.graphics_icon, title: 'API Integration', description: 'Integrating REST APIs and handling frontend–backend communication efficiently for seamless data flow.', link: '' },
 ]
 
 export const infoList = [
-    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'HTML, CSS, JavaScript React Js, Next Js' },
-    { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'B.Tech in Computer Science' },
-    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 5 projects' }
+    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Tech Stack', description: 'HTML, CSS, JavaScript, React.js, Next.js, Django, Odoo ERP' },
+    { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'B.Sc. CSIT (77%) | FYP: Plant Disease Detection' },
+    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Location', description: 'Narayantar, Jorpati, Kathmandu, Nepal' }
+];
+
+export const experienceData = [
+    {
+        role: 'ERP Assistant',
+        company: 'Nepa Works',
+        period: 'Jan 2026 – Present',
+        description: [
+            'Assisting in the implementation and configuration of ERP systems for business operations.',
+            'Supporting workflow automation and data management across departments.',
+            'Collaborating with teams to optimize processes using ERP tools.',
+        ],
+    },
+    {
+        role: 'Full Stack Developer',
+        company: 'Techylads Solution',
+        period: '2024 – 2025',
+        description: [
+            'Designed and developed responsive web applications using React.js and Tailwind CSS.',
+            'Integrated REST APIs and handled frontend–backend communication efficiently.',
+            'Customized and configured Odoo ERP modules for eCommerce, sales, and inventory management.',
+            'Collaborated with cross-functional teams to deliver projects on time.',
+        ],
+    },
+];
+
+export const educationData = [
+    {
+        college: 'Tribhuvan University',
+        period: '2020 – 2025',
+        degree: 'Bachelor of Science in Computer Science / IT',
+        details: 'Percentage: 77% | Final year Project: Plant Disease Detection System'
+    },
+    {
+        college: 'Kantipur College',
+        period: '2019 – 2020',
+        degree: 'Science (Computer Science)',
+        details: 'GPA: 3.5'
+    }
+];
+
+export const certificateData = [
+    {
+        title: 'Frontend Development',
+        year: '2021',
+        org: 'School of Information Technology'
+    },
+    {
+        title: 'AWS Associate Solution Architect',
+        year: '2025',
+        org: 'Adex International'
+    }
 ];
 
 export const toolsData = [

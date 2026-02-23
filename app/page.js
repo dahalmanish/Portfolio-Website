@@ -1,41 +1,45 @@
 'use client'
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Experience from "./components/Experience";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Services from "./components/Services";
 import Work from "./components/Work";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
+import ERPDashboard from "./components/ERPDashboard";
 export default function Home() {
-  const [isDarkMode,setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
-  useEffect(()=>{
-    if(localStorage.theme == 'dark' || (!('theme' in localStorage) && window.matchMedia('()prefers-color-schema: dark').matches)){
+  useEffect(() => {
+    if (localStorage.theme == 'dark' || (!('theme' in localStorage) && window.matchMedia('()prefers-color-schema: dark').matches)) {
       setIsDarkMode(true);
-    }else{
+    } else {
       setIsDarkMode(false);
     }
-  },[])
+  }, [])
 
-  useEffect(()=>{
-    if(isDarkMode){
+  useEffect(() => {
+    if (isDarkMode) {
       document.documentElement.classList.add('dark');
       localStorage.theme = 'dark';
-    }else{
+    } else {
       document.documentElement.classList.remove('dark');
       localStorage.theme = '';
     }
-  },[isDarkMode])
+  }, [isDarkMode])
   return (
     <>
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      <Header isDarkMode={isDarkMode}/>
-      <About isDarkMode={isDarkMode}/>
-      <Services isDarkMode={isDarkMode}/>
-      <Work isDarkMode={isDarkMode}/>
-      <Contact isDarkMode={isDarkMode}/>
-      <Footer isDarkMode={isDarkMode}/>
+      <Header isDarkMode={isDarkMode} />
+      <About isDarkMode={isDarkMode} />
+      <Experience />
+      <ERPDashboard isDarkMode={isDarkMode} />
+      <Services isDarkMode={isDarkMode} />
+      <Work isDarkMode={isDarkMode} />
+      <Contact isDarkMode={isDarkMode} />
+      <Footer isDarkMode={isDarkMode} />
     </>
   );
 }
