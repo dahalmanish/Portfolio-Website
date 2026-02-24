@@ -36,7 +36,7 @@ const About = ({ isDarkMode }) => {
                     whileInView={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <Image src={assets.profile_img} alt='user' className='w-full rounded-3xl' />
+                    <Image src={assets.profile_img} alt='Manish Dahal - About Section Image' className='w-full rounded-3xl' />
                 </motion.div>
                 <motion.div className='flex-1'
                     initial={{ opacity: 0 }}

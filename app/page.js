@@ -1,4 +1,8 @@
 'use client'
+/**
+ * Main entry point for Manish Dahal's Portfolio website.
+ * Contains the primary layout and component composition.
+ */
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Experience from "./components/Experience";

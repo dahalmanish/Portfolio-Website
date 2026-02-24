@@ -13,7 +13,7 @@ const Header = () => {
         className='relative'
       >
         <div className='absolute inset-0 bg-blue-500/20 blur-3xl rounded-full -z-10 animate-pulse' />
-        <Image src={assets.profile_img} alt='' className='rounded-full w-32 relative z-10 border-4 border-white/10' />
+        <Image src={assets.profile_img} alt='Manish Dahal - Profile Image' className='rounded-full w-32 relative z-10 border-4 border-white/10' />
       </motion.div>
       <motion.h3
         initial={{ y: -20, opacity: 0 }}
